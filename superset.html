@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.6">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!-- superset-embed.html --&gt;</p>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="en"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;Superset Embed&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script type="module"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>import { embedDashboard } from "https://cdn.jsdelivr.net/npm/@superset-ui/embedded-sdk/+esm";</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>embedDashboard({</p>
+<p class="p1"><span class="Apple-converted-space">        </span>id: "2b94b6ad-c057-4e6b-9abc-55c00a851acd", // dashboard id</p>
+<p class="p1"><span class="Apple-converted-space">        </span>supersetDomain: "https://reports-qa.starmfv2.remiges.tech",</p>
+<p class="p1"><span class="Apple-converted-space">        </span>mountPoint: document.getElementById("dashboard-container"),</p>
+<p class="p1"><span class="Apple-converted-space">        </span>fetchGuestToken: () =&gt; “eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjp7ImZpcnN0X25hbWUiOiJyZXBvcnQtdmlld2VyIiwidXNlcm5hbWUiOiJyZXBvcnQtdmlld2VyIiwibGFzdF9uYW1lIjoicmVwb3J0LXZpZXdlciJ9LCJyZXNvdXJjZXMiOlt7InR5cGUiOiJkYXNoYm9hcmQiLCJpZCI6IjJiOTRiNmFkLWMwNTctNGU2Yi05YWJjLTU1YzAwYTg1MWFjZCJ9XSwicmxzX3J1bGVzIjpbXSwiaWF0IjoxNzQ4NTQyNzMyLjU1NjQxMSwiZXhwIjoxNzQ4NTQ0NTMyLjU1NjQxMSwiYXVkIjoiaHR0cDovLzAuMC4wLjA6ODA4MC8iLCJ0eXBlIjoiZ3Vlc3QifQ.PkUXeNL2KtN4xX0OjU6tqYs1LxqjgfvvcE-tl_PP-Gg”,</p>
+<p class="p1"><span class="Apple-converted-space">        </span>dashboardUiConfig: {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>hideTitle: true,</p>
+<p class="p1"><span class="Apple-converted-space">          </span>hideChartControls: true,</p>
+<p class="p1"><span class="Apple-converted-space">        </span>},</p>
+<p class="p1"><span class="Apple-converted-space">      </span>});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;body&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="dashboard-container" style="height: 100vh;"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
