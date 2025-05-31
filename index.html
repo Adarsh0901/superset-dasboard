@@ -27,6 +27,12 @@
             hideChartControls: true,
           },
         });
+
+        const iframe = document.querySelector("iframe");
+        if (iframe) {
+          iframe.style.width = "100%";
+          iframe.style.minHeight = `${window.innerHeight * 0.9}px`;
+        }
       }
     </script>
   </head>
