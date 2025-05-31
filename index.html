@@ -1,13 +1,36 @@
-<!doctype html>
-<html lang="en" data-critters-container>
-<head>
-  <meta charset="utf-8">
-  <title>SupersetDb</title>
-  <base href="/superset-dasboard/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-<link rel="stylesheet" href="styles-5INURTSO.css"></head>
-<body>
-  <app-root></app-root>
-<script src="polyfills-FFHMD2TL.js" type="module"></script><script src="main-QVEVRPZZ.js" type="module"></script></body>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Superset Embed</title>
+    <script src="https://unpkg.com/@superset-ui/embedded-sdk"></script>
+    <script type="module">
+      // Parse query parameters from the URL
+      const params = new URLSearchParams(window.location.search);
+
+      // Extract values from URL parameters
+      const dashboardId = params.get('id');      // e.g., "2b94b6ad-c057-4e6b-9abc-55c00a851acd"
+      const rptKey = params.get('rpt_key');      // if needed for token generation or logs
+      const supersetUrl = params.get('url');     // e.g., "https://reports-qa.starmfv2.remiges.tech"
+
+      // Validate required params before embedding
+      if (!dashboardId || !supersetUrl || !rptKey) {
+        console.error('Missing required query parameters: id or url or rpt_key');
+      } else {
+        supersetEmbeddedSdk.embedDashboard({
+          id: dashboardId,
+          supersetDomain: supersetUrl,
+          mountPoint: document.getElementById("dashboard-container"),
+          fetchGuestToken: () => rptKey, // Replace with dynamic token logic if needed
+          dashboardUiConfig: {
+            hideTitle: true,
+            hideChartControls: true,
+          },
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <div id="dashboard-container" style="height: 100vh;"></div>
+  </body>
 </html>
