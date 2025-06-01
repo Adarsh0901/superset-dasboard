@@ -1,42 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Superset Embed</title>
-    <script src="https://unpkg.com/@superset-ui/embedded-sdk"></script>
-    <script type="module">
-      // Parse query parameters from the URL
-      const params = new URLSearchParams(window.location.search);
+..loadHtmlString('''
+              <!DOCTYPE html>
+              <html lang="en">
+              <head>
+              <meta charset="UTF-8" />
+              <title>Superset Embed</title>
+              <script src="https://unpkg.com/@superset-ui/embedded-sdk"></script>
+              <script type="module">
 
-      // Extract values from URL parameters
-      const dashboardId = params.get('id');      // e.g., "2b94b6ad-c057-4e6b-9abc-55c00a851acd"
-      const rptKey = params.get('rpt_key');      // if needed for token generation or logs
-      const supersetUrl = params.get('url');     // e.g., "https://reports-qa.starmfv2.remiges.tech"
+            // Extract values from URL parameters
+            const dashboardId = ${configValues?.id};
+            const rptKey = ${configValues?.rpt_key}; 
+            const supersetUrl = ${configValues?.url};
 
-      // Validate required params before embedding
-      if (!dashboardId || !supersetUrl || !rptKey) {
-        console.error('Missing required query parameters: id or url or rpt_key');
-      } else {
-        supersetEmbeddedSdk.embedDashboard({
-          id: dashboardId,
-          supersetDomain: supersetUrl,
-          mountPoint: document.getElementById("dashboard-container"),
-          fetchGuestToken: () => rptKey, // Replace with dynamic token logic if needed
-          dashboardUiConfig: {
-            hideTitle: true,
-            hideChartControls: true,
-          },
-        });
+            // Validate required params before embedding
+            if (!dashboardId || !supersetUrl || !rptKey) {
+              console.error('Missing required query parameters: id or url or rpt_key');
+            } else {
+              supersetEmbeddedSdk.embedDashboard({
+                id: dashboardId,
+                supersetDomain: supersetUrl,
+                mountPoint: document.getElementById("dashboard-container"),
+                fetchGuestToken: () => rptKey, // Replace with dynamic token logic if needed
+                dashboardUiConfig: {
+                  hideTitle: true,
+                  hideChartControls: true,
+                },
+              });
 
-        const iframe = document.querySelector("iframe");
-        if (iframe) {
-          iframe.style.width = "100%";
-          iframe.style.minHeight = `${window.innerHeight * 0.9}px`;
-        }
-      }
-    </script>
-  </head>
-  <body>
-    <div id="dashboard-container" style="width: 100%;min-height: 100vh;"></div>
-  </body>
-</html>
+              const iframe = document.querySelector("iframe");
+              if (iframe) {
+                iframe.style.width = "100%";
+                iframe.style.minHeight = "100vh";
+              }else{
+                 document.getElementById("dashboard-container").innerHtml = "Something went wrong"
+              }
+            }
+            </script>
+            </head>
+            <body>
+            <div id="dashboard-container" style="width: 100%;min-height: 100vh;">Hello</div>
+            </body>
+            </html>
+              ''');
